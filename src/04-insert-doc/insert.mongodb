@@ -1,0 +1,28 @@
+//use("platzi_store") 
+//Mongo Atlas al no tener creada el collection, este crea automaticamente utilizando el codigo   use("platzi_store")
+
+//db.products.insertOne({
+//    name: "Product 1",
+//    price: 1000
+//})
+//db.products.insertOne({
+//name: "Product 2",
+//price: 100
+//})
+
+  //Si vuelves a insertarlo dos veces, estos se vuelven a copiar y cuando le lanzas una busquedad te apareceran 4 datos, ya que mongo le da un _id automatico.
+
+use("platzi_store") 
+db.products.insertOne({
+   _id:1, 
+   name: "Product 1",
+   price: 1000
+})
+
+db.products.insertOne({
+    _id:2,
+    name: "Product 2",
+    price: 100
+})
+
+ //Si vuelves a generar esto por segunda vez, mongodb interpretara que sera un error porque _id que le creamos nosotros resulta ser Primary Key. 
