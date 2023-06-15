@@ -1,0 +1,50 @@
+// Using $gt (>: Mayor que) $gte (>= Mayor Igual)
+
+// Traera los valores 25 y 30, pero no partira por el 20, asi cumple Mayor que 20
+use("platzi_store")
+db.inventory.find({ qty: { $gt: 20 } })
+
+// Traera los valores 20, 25 y 30, sacara solamente el n°15 y asi cumple Mayor Igual que 20
+use("platzi_store")
+db.inventory.find({ qty: { $gte: 20 } })
+
+// Using $lt (<: Menor que) $lte (<= Menor Igual)
+
+// Traera solo el valor 15 y excluiria todos los otros valores
+use("platzi_store")
+db.inventory.find({ qty: { $lt: 20 } })
+
+// Traera solo los valores 15 y 20 del documento y excluiria todos los otros valores
+use("platzi_store")
+db.inventory.find({ qty: { $lte: 20 } })
+
+// Join - Traer todo los archivos que sean Mayor igual 25 y Menor igual 35 = El resultado debe ser 25 y 30
+use("platzi_store")
+db.inventory.find({ qty: { $gte: 25, $lte: 35 } })
+
+// Join - Traer todo los archivos que sean Mayor igual 20 y Menor igual 35 = El resultado debe ser 20 y 25
+use("platzi_store")
+db.inventory.find({ qty: { $gte: 20, $lte: 25 } })
+
+// New join
+
+// Segun la condicional no hay ningun sub documento que tenga qty:20 y 25
+use("platzi_store")
+db.inventory.find({
+    "item.name": "ab",
+    qty: { $gte: 20, $lte: 25 }
+})
+
+// Segun la condicional solo aparecera un dato, porque solamente se encuentra en el code 123
+use("platzi_store")
+db.inventory.find({
+    "item.code": "123",
+    qty: { $gte: 20, $lte: 25 }
+})
+
+// Quiero que no busque mi sub documento 123 y si los demas que tengan qty Mayor Igual 20 y Menor Igual 25
+use("platzi_store")
+db.inventory.find({
+    "item.code": { $ne: "123" },
+    qty: { $gte: 20, $lte: 25 }
+})
