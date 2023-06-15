@@ -1,0 +1,12 @@
+use("sample_training")
+
+db.zips.updateMany( // Actualizacion completa de la poblacion de la ciudad de CLEVELAND
+    //Query => Consulta
+    { city: "CLEVELAND" },
+    //Update => operators : Actualizar => Operadores
+    {
+        $inc: { //Incrementar 
+            pop: 1000 // Inc the pop => Incrementar la población en 1000 de varios documentos
+        }
+    }
+)

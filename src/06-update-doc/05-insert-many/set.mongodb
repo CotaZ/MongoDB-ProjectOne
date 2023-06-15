@@ -1,0 +1,15 @@
+use("platzi_store")
+
+//ACTUALIZAR ATRIBUTOS con $set
+db.products.updateOne(
+    //Query => Consulta: operators
+    { _id: 2 },
+    //name: 'change name', => Cambiar el nombre con el operador "set"
+    {
+        $set: { /*set: colocar */
+            name: 'change name',
+            price: 3000,
+            tags: ['A', 'B', 'C']
+        }
+    }
+);

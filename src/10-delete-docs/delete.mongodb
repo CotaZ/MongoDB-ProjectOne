@@ -1,0 +1,11 @@
+use("platzi_store")
+
+//db.products.deleteOne({ _id: 1 }) Se elimina
+
+// En el caso de tener un _id autogenerado el resultado deberia ser asi: db.products.deleteOne({ _id: ObjectId("1234343342")})
+
+// db.products.deleteMany({ //Elimina todos los arrays que contengan price: 100 del documento
+//     price: 100
+// })
+
+db.products.drop() // elimina todos los documentos

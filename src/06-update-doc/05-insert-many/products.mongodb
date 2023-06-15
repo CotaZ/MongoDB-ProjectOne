@@ -1,0 +1,36 @@
+use("platzi_store")
+
+db.products.drop() // drop() borra todos los documentos de toda una coleccion !cuidado :v!
+
+db.products.insertMany([  //si hay una colision de _id  si inserta pero hasta la colision
+    {
+        _id: 1,
+        name: "Product 1",
+        price: 100
+    },
+    {
+        _id: 2,
+        name: "Product 2",
+        price: 20
+    },
+    {
+        _id: 3,
+        name: "Product 3",
+        price: 23
+    },
+    {
+        _id: 4,
+        name: "Product 4",
+        price: 2323
+    },
+    {
+        name: "Product 5",
+        price: 3200
+    },
+
+], {
+
+    ordered: false //si hay una colision de _id  si inserta pero no inserta los colisionados
+})
+
+db.products.find()

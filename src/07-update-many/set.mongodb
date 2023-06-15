@@ -1,0 +1,38 @@
+use("sample_training")
+
+// $set 
+//db.zips.updateMany( // Actualizacion completa de la poblacion de la ciudad de CLEVELAND
+//Query => Consulta
+//{ city: "CLEVELAND" },
+//Update => operators : Actualizar => Operadores
+//{
+//$set: { //Colocar un nuevo campo
+//myAttr: "hola" // Colocar un nuevo campo y su dato
+//}
+//}
+//)
+
+// $rename
+//db.zips.updateMany( // Actualizacion completa de la poblacion de la ciudad de CLEVELAND
+//    //Query => Consulta
+//    { city: "CLEVELAND" },
+//Update => operators : Actualizar => Operadores
+//    {
+//        $rename: { //Operador para cambiar el nombre al nuevo campo myAttr
+//           myAttr: "my_data" //El campo myAttr sera cambiado por my_data
+//        }
+//    }
+//)  
+
+// $unset
+db.zips.updateMany( // Actualizacion completa de la poblacion de la udad de CLEVELAND
+    //Query => Consulta
+    { city: "CLEVELAND" },
+    //Update => operators : Actualizar => Operadores
+    {
+        $unset: { //El operador saca solamente el atrubuto my_data
+            my_data: "" //El campo "" debe estar vacio
+        }
+    }
+
+)

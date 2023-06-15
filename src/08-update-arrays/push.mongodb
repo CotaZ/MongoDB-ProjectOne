@@ -1,0 +1,9 @@
+use("platzi_store")
+
+db.inventory.updateOne( //Actualizar sumando un arrays => arreglo dentro de la lista tags, agregando "headphone"
+    { _id: 4 }, {
+    $push: { //push => significa empujar un dato dentro de una lista
+        tags: "headphone"
+    }
+}
+)

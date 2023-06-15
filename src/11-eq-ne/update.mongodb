@@ -1,0 +1,12 @@
+use("platzi_store")
+
+//Aqui le digo que me actualice todos los los archivos que no sean 20, hagan una actualización en especifico, incrementando qty en 10
+db.inventory.updateMany(
+    { qty: { $ne: 20 } },
+    // Update - Operators
+    {
+        $inc: {
+            qty: 10
+        }
+    }
+)

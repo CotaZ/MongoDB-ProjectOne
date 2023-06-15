@@ -1,0 +1,37 @@
+use("platzi_store")
+
+// db.iot.insert({
+//     sensor: "A001",
+//     date: "2022-01-03",
+//     readings: [1212]
+// })
+
+//Error del Push => Sub arrays
+// db.iot.updateOne({
+//     sensor: "A001",
+//     date: "2022-01-03",
+// }, {
+//     $push: {
+//         readings: [2323] //El error es abrir un arrary [] => Nunca se debe hacer esto solo se debe colocar el valor sin signos
+//     }
+// })
+
+// Corrigiendo el error anterior
+// db.iot.updateOne({
+//     sensor: "A001",
+//     date: "2022-01-03",
+// }, {
+//     $pop: { //Sirve para eliminar el primer array o ultimo array del elemento
+//         readings: 1 // El -1 equilavale al primer array y el 1 equivales al segundo array, el resientemente creado
+//     }
+// })
+
+//Error del Push => Sub arrays
+db.iot.updateOne({
+    sensor: "A001",
+    date: "2022-01-03",
+}, {
+    $push: {
+        readings: 2323 //El error es abrir un arrary [] => Nunca se debe hacer esto solo se debe colocar el valor sin signos: readings: 2323
+    }
+})

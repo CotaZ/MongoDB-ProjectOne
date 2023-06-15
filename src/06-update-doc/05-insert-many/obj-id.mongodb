@@ -1,0 +1,13 @@
+use("platzi_stores")
+
+db.products.updateOne(
+    //Query => Consulta: operators
+    { _id: 2 },
+   
+    {
+        $inc: { //inc => Incrementar
+            price: 100, //El precio anterior tenia 3000
+
+        }
+    }
+);

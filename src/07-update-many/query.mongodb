@@ -1,0 +1,5 @@
+use("sample_training")
+
+db.zips.find({ city: "CLEVELAND" })
+// 1° pop => poblacion es de 2369
+// 2° pop => poblacion es de 1244

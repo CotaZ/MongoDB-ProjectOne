@@ -1,0 +1,23 @@
+// Usando equal implicitamente
+use("platzi_store")
+db.inventory.find({ qty: 20 })
+
+// Usando equal explicitamente 
+use("platzi_store")
+db.inventory.find({ qty: { $eq: 20 } })
+
+// Ahora veremos el sub documento "name" equal implicitamente
+use("platzi_store")
+db.inventory.find({ "item.name": "ab" })
+
+// Ahora veremos el sub documento "code" equal implicitamente
+use("platzi_store")
+db.inventory.find({ "item.code": "123" })
+
+// Ahora veremos el sub documento "code" equal explicitamente
+use("platzi_store")
+db.inventory.find({ "item.code": { $eq: "123" } })
+
+// Using $ne - Traera todos los resultados que no son igual a 20
+use("platzi_store")
+db.inventory.find({ qty: { $ne: 20 } })

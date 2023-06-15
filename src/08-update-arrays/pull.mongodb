@@ -1,0 +1,20 @@
+use("platzi_store")
+
+//Remove one element from array => Remover un elemento de los arreglos
+//db.inventory.updateMany({}, {//{} => Si la llave esta vacía quiere decir que trae todos los documentos que encuentre 
+
+//    $pull: { //pull => significa jalar un dato dentro de unos arrays
+//        tags: "book" //Dentro de este array quiero que quite todos los elementos que diga "book"
+//    }
+//})
+
+//Remove others element from array => Remover otros o más elemento de los arreglos
+
+db.inventory.updateMany({}, {//{} => Si la llave esta vacía quiere decir que trae todos los documentos que encuentre 
+
+    $pull: { //pull => significa jalar un o unos datos dentro de los arrays
+        tags: { //Dentro de todos los arrays de tags
+            $in: ["appliance", "school"] //Se eliminaran con el operador "in" cualquier dato buscado en todos los los arrays que tengo duplicados
+        }
+    }
+})

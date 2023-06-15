@@ -1,0 +1,13 @@
+use("platzi_store")
+
+//ACTUALIZAR ATRIBUTOS con inc
+db.products.updateOne(
+    //Query => Consulta: operators
+    { _id: ObjectId("648738ff807d8a2da6c47fbd") }, //Cuando un _id es autogenerado este se actualizara utilizando la funcion de ObjectId("codigo")
+    {
+        $inc: { //inc => Incrementar
+            price: 100,
+
+        }
+    }
+);
