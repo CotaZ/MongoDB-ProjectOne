@@ -1,0 +1,31 @@
+use("platzi_store")
+// Aqui se hace un query directa al punto del documento description
+db.inventory.find({ "item.description": "Single line description." })
+
+use("platzi_store")
+//  $regex Busca las expresiones regulares en este ejemplo se escribe entre medio de los dos //
+db.inventory.find({ "item.description": { $regex: /line/ } })
+
+use("platzi_store")
+// La expresión regular no la buscara en MAYUSCULA porque no existe
+db.inventory.find({ "item.description": { $regex: /LINE/ } })
+
+use("platzi_store")
+// La expresión regular si le pones al final la letra "i" Ante pondra la busquedad y te arrojara los resultado buscado si lo escribes con mayusculas o minusculas
+db.inventory.find({ "item.description": { $regex: /LINE/i } })
+
+use("platzi_store")
+// La expresión regular si le pones al final el signo "$" al final de la palabra "line" buscara la los documentos que tengan como resultado line al final de los datos
+db.inventory.find({ "item.description": { $regex: /line$/i } })
+
+use("platzi_store")
+// La expresión regular si le pones al final el signo "^" al inicio de la palabra "single" buscara la los documentos que tengan como resultado line al inicio de los datos
+db.inventory.find({ "item.description": { $regex: /^single/i } })
+
+use("platzi_store")
+// La expresión regular si le pones al final el signo "m" que significa multi-line al final de la letra "i" buscara la los documentos que tengan como resultado las oraciones con la letra "s"
+db.inventory.find({ "item.description": { $regex: /^s/im } })
+
+
+
+
