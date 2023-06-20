@@ -1,0 +1,58 @@
+use("platzi_store")
+
+// $in: Puedo obtener esos elementos de un arrays & values especificos
+
+db.inventory.find(
+    {
+        qty:
+        {
+            $in: [20, 25]
+        }
+    })
+
+use("platzi_store")
+db.inventory.find(
+    {
+        tags:
+        {
+            $in: ["book", "electronics"]
+        }
+    })
+
+use("platzi_store")
+db.inventory.find(
+    {
+        tags:
+        {
+            $nin: ["book", "electronics"]
+        }
+    })
+
+//arrays
+use("platzi_store")
+db.inventory.find({ tags: "book" })
+
+use("platzi_store")
+db.inventory.find({ tags: ["school", "book"] })
+
+//arrays $all busca los datos no importa el orden
+use("platzi_store")
+db.inventory.find({ tags: { $all: ["school", "book"] } })
+
+// $size quiere decir que me va a buscar las listas que contengan dos elementos 
+use("platzi_store")
+db.inventory.find({ tags: { $size: 3 } })
+
+// $elemMatch  para seleccionar documentos que tengan un campo con un array que contenga al menos un elemento que cumpla con ciertos criterios de consulta.
+use("platzi_store")
+db.survey.find(
+    {
+        results:
+        {
+            $elemMatch:
+            {
+                product: "xyz",
+                score: { $gte: 7 }
+            }
+        }
+    })

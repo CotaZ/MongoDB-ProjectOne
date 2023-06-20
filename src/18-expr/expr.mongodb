@@ -1,0 +1,11 @@
+use("platzi_store")
+
+db.monthlyBudget.find({ spent: { $gte: 100 } })
+
+//
+use("platzi_store")
+db.monthlyBudget.find({ 
+    $expr: {
+        $gte: ["$spent", "$budget"]
+    }
+})

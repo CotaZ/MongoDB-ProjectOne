@@ -1,7 +1,7 @@
 use("sample_training")
 
 db.trips.find(
-    // query
+    // query $gte que todos los valores 
     { tripduration: { $gte: 500 } },
     // projection
     { tripduration: 1, usertype: 1 }
