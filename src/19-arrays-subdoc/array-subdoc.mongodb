@@ -1,0 +1,33 @@
+use("sample_training")
+db.trips.find({ "statt station location.type": "Point" })
+
+use("sample_training")
+db.companies.find({
+    "relationships.0.person.last_name":"Zuckerberg"
+}, {
+    name: 1,
+    relationships:1
+}
+).count()
+
+use("sample_training")
+db.companies.find({
+    "relationships.0.person.first_name":"Mark"
+}, {
+    name: 1,
+    relationships:1
+}
+).count() // El sub".0." es la primera query del array de las personas que solamente estan a cargo de una compañia, eso significa que dado que el conjunto de dato de las compañia hay 108 personas que se llaman Mark, al contrario a la busquedad anterior que solamente habia una sola persona con el apellido Zuckerberg a cargo de una compañia.
+
+use("sample_training")
+db.companies.find({
+    relationships: {
+        $elemMatch: {
+            "person.first_name":"Mark"
+        }
+    }
+}, {
+    name: 1,
+    relationships:1
+}
+).count() // En este caso buscara a todas las personas que estaran a cargo de diferentes areas.
